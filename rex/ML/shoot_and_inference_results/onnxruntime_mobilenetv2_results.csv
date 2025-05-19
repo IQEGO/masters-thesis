@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+onnxruntime,mobilenetv2,cat,6.52,468.60,Unknown class 892,5.2166
+onnxruntime,mobilenetv2,cat,6.26,605.99,Unknown class 844,5.6710
+onnxruntime,mobilenetv2,cat,6.31,603.88,Unknown class 844,5.6883
+onnxruntime,mobilenetv2,cat,6.27,606.02,Unknown class 844,5.7254
+onnxruntime,mobilenetv2,cat,6.22,607.54,Unknown class 844,5.6379
+onnxruntime,mobilenetv2,cat,6.37,603.67,Unknown class 844,5.6888
+onnxruntime,mobilenetv2,cat,6.25,604.09,Unknown class 844,5.7377
+onnxruntime,mobilenetv2,cat,6.28,603.85,Unknown class 844,5.7328
+onnxruntime,mobilenetv2,cat,6.26,606.91,Unknown class 844,5.7469
+onnxruntime,mobilenetv2,cat,6.42,612.48,Unknown class 844,5.7095

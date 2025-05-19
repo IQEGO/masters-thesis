@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Top Prediction,Probability
+onnxruntime,vit_b16,cat,240.52,tiger cat,7.6911
+onnxruntime,vit_b16,cat,239.89,tiger cat,7.6911
+onnxruntime,vit_b16,cat,246.43,tiger cat,7.6911
+onnxruntime,vit_b16,cat,241.30,tiger cat,7.6911
+onnxruntime,vit_b16,cat,240.60,tiger cat,7.6911
+onnxruntime,vit_b16,cat,229.60,tiger cat,7.6911
+onnxruntime,vit_b16,cat,240.30,tiger cat,7.6911
+onnxruntime,vit_b16,cat,246.39,tiger cat,7.6911
+onnxruntime,vit_b16,cat,231.31,tiger cat,7.6911
+onnxruntime,vit_b16,cat,240.29,tiger cat,7.6911

@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+onnxruntime,vit_b16,cat,222.77,819.40,Unknown class 680,5.8162
+onnxruntime,vit_b16,cat,222.73,819.56,Unknown class 680,5.7889
+onnxruntime,vit_b16,cat,222.94,820.27,Unknown class 680,5.8580
+onnxruntime,vit_b16,cat,222.59,828.49,Unknown class 680,5.9160
+onnxruntime,vit_b16,cat,224.60,821.59,Unknown class 680,5.5985
+onnxruntime,vit_b16,cat,222.64,819.85,Unknown class 680,5.7295
+onnxruntime,vit_b16,cat,222.76,822.16,Unknown class 680,5.7529
+onnxruntime,vit_b16,cat,222.66,820.17,Unknown class 680,5.8754
+onnxruntime,vit_b16,cat,222.61,830.15,Unknown class 680,5.8113
+onnxruntime,vit_b16,cat,222.79,828.65,Unknown class 680,5.8249

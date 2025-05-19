@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Top Prediction,Probability
+onnxruntime,mobilenetv2,cat,7.43,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.15,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.05,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.11,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.04,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.07,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.03,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.02,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.13,Egyptian cat,8.7280
+onnxruntime,mobilenetv2,cat,7.21,Egyptian cat,8.7280

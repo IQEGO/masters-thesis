@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+onnxruntime,squeezenet,cat,10.45,567.62,Unknown class 892,8.0012
+onnxruntime,squeezenet,cat,10.43,607.39,Unknown class 892,8.1046
+onnxruntime,squeezenet,cat,10.40,617.58,Unknown class 892,8.1298
+onnxruntime,squeezenet,cat,10.51,609.10,Unknown class 892,8.1365
+onnxruntime,squeezenet,cat,10.40,612.84,Unknown class 892,8.0581
+onnxruntime,squeezenet,cat,10.42,607.63,Unknown class 892,8.0944
+onnxruntime,squeezenet,cat,10.40,609.43,Unknown class 892,8.1695
+onnxruntime,squeezenet,cat,10.39,607.54,Unknown class 892,8.1367
+onnxruntime,squeezenet,cat,10.40,609.46,Unknown class 892,8.1063
+onnxruntime,squeezenet,cat,10.55,609.57,Unknown class 892,8.1487

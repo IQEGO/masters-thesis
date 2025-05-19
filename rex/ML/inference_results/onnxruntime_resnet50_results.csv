@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Top Prediction,Probability
+onnxruntime,resnet50,cat,61.23,tiger cat,0.0002
+onnxruntime,resnet50,cat,67.83,tiger cat,0.0002
+onnxruntime,resnet50,cat,50.37,tiger cat,0.0002
+onnxruntime,resnet50,cat,67.35,tiger cat,0.0002
+onnxruntime,resnet50,cat,67.34,tiger cat,0.0002
+onnxruntime,resnet50,cat,61.10,tiger cat,0.0002
+onnxruntime,resnet50,cat,67.22,tiger cat,0.0002
+onnxruntime,resnet50,cat,50.40,tiger cat,0.0002
+onnxruntime,resnet50,cat,67.25,tiger cat,0.0002
+onnxruntime,resnet50,cat,49.24,tiger cat,0.0002

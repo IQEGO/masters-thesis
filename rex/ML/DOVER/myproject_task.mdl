@@ -1,0 +1,2000 @@
+Model {
+  Name                    "myproject_task"
+  Version                 3.00
+  #RexVersion             "3.00.3 rev. 16843, Date 2024-11-03"
+  ShowPortLabels          on
+  SavedCharacterEncoding  "UTF-8"
+  MaskType                "REX sequence"
+  MaskIconFrame           on
+  MaskIconOpaque          on
+  MaskIconRotate          "none"
+  MaskIconUnits           "autoscale"
+  BlockDefaults {
+    ForegroundColor         "black"
+    BackgroundColor         "white"
+    DropShadow              off
+    NamePlacement           "normal"
+    FontName                "Arial"
+    FontSize                10
+    FontWeight              "normal"
+    FontAngle               "normal"
+    ShowName                on
+    Orientation             "right"
+  }
+  AnnotationDefaults {
+    HorizontalAlignment     "center"
+    VerticalAlignment       "middle"
+    ForegroundColor         "black"
+    BackgroundColor         "white"
+    DropShadow              off
+    FontName                "Arial"
+    FontSize                10
+    FontWeight              "normal"
+    FontAngle               "normal"
+  }
+  LineDefaults {
+    FontName                "Arial"
+    FontSize                9
+    FontWeight              "normal"
+    FontAngle               "normal"
+  }
+  System {
+    Name                    "myproject_task"
+    ZoomFactor              98
+    Location                [244, 34, 585, 436]
+    #GUID                   "13a2f1bf-adc5-42ba-9f2b-f576939a6341"
+    Block {
+      BlockType               Reference
+      Name                    "AND"
+      Ports                   [2, 2, 0, 0, 0]
+      Position                [455, 83, 490, 107]
+      SourceBlock             "logiclib/AND"
+      #GUID                   "ea7c170b-9647-4713-81ca-8c7cf7abeff7"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "AND1"
+      Ports                   [2, 2, 0, 0, 0]
+      Position                [580, 363, 615, 387]
+      SourceBlock             "logiclib/AND"
+      #GUID                   "8a64faa3-213c-4968-9e60-bda1f0da559d"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "ATMT"
+      Ports                   [20, 19, 0, 0, 0]
+      Position                [240, 86, 295, 294]
+      SourceBlock             "logiclib/ATMT"
+      morestps                off
+      sfcname                 ""
+      STT                     [0 0 1; 1 1 2; 2 2 3; 3 3 0]
+      touts                   [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16]
+      #GUID                   "749c7f47-851e-445b-bf32-b51f15f2d903"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "CNB"
+      Ports                   [0, 1, 0, 0, 0]
+      Position                [365, 58, 385, 72]
+      SourceBlock             "mathlib/CNB"
+      YCN                     on
+      #GUID                   "5f761634-6266-43da-a44c-d7b30dad49fb"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "COUNT"
+      Ports                   [7, 4, 0, 0, 0]
+      Position                [340, 237, 395, 313]
+      SourceBlock             "logiclib/COUNT"
+      #GUID                   "9602e4c6-bbfd-4573-ba3e-d2852fbdb5fa"
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "DOVER_Inference"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [455, 351, 555, 384]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "0ea7e035-5e7d-4fa0-b641-300c42f3624b"
+      System {
+        Name                    "DOVER_Inference"
+        __CopyByReference       off
+        #GUID                   "0ea7e035-5e7d-4fa0-b641-300c42f3624b"
+        Block {
+          BlockType               Inport
+          Name                    "Run"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "323eb471-8659-4779-a051-fee3471a9c8c"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "SequenceNo"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "d347bc03-9347-4825-8514-0533857e62eb"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "08eaa1bb-27af-4da4-b327-76a8de070e86"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "d6737140-2719-420b-89bd-7580ad3a31cb"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "inference_dover_onnx.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/DoverRexTest"
+          p1                      "dover_mobile"
+          p2                      "onnxruntime"
+          p3                      "/mnt/external_hdd/ATMTRexTest/sequences"
+          p4                      16
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "8835a6e4-42f5-4b72-85b5-7dbb931c8318"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Done"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "01ad8fcd-c229-4d85-8c61-ecc04d094669"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "3b1fc3f1-06ba-49d5-ae12-46da104bd697"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "70bd33ac-a2cd-40c4-acf4-abd3c82e4aab"
+        }
+        Line {
+          SrcBlock                "Run"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "70eae43d-fdef-464c-89c8-7f83e98f4624"
+          Branch {
+            DstBlock                "Done"
+            DstPort                 1
+            #GUID                   "ef247df3-66cb-4d31-9c77-625bae3efe75"
+          }
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "5fde067a-6440-4e6b-83a3-b3a9110fed3e"
+          }
+        }
+        Line {
+          SrcBlock                "SequenceNo"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "1b28809d-6914-4ded-88ef-e16664753d73"
+        }
+      }
+    }
+    Block {
+      BlockType               From
+      Name                    "From"
+      Position                [160, 138, 220, 152]
+      ShowName                off
+      GotoTag                 "C1"
+      FontSize                10
+      #GUID                   "15a8fc2f-ebdd-4060-b3fb-dfb6bf27be3e"
+    }
+    Block {
+      BlockType               From
+      Name                    "From4"
+      Position                [95, 148, 155, 162]
+      ShowName                off
+      GotoTag                 "C2"
+      FontSize                10
+      #GUID                   "53c07efd-2cbd-43e3-8965-29187fd412ab"
+    }
+    Block {
+      BlockType               From
+      Name                    "From6"
+      Position                [160, 158, 220, 172]
+      ShowName                off
+      GotoTag                 "C3"
+      FontSize                10
+      #GUID                   "1424ed29-f047-4b55-b1ae-0da9fa228662"
+    }
+    Block {
+      BlockType               From
+      Name                    "From7"
+      Position                [95, 128, 155, 142]
+      ShowName                off
+      GotoTag                 "C0"
+      FontSize                10
+      #GUID                   "9f8ecda2-a7dd-475a-9759-eea05c2fee51"
+    }
+    Block {
+      BlockType               Goto
+      Name                    "Goto1"
+      Position                [665, 293, 725, 307]
+      ShowName                off
+      GotoTag                 "C2"
+      TagVisibility           "local"
+      FontSize                10
+      #GUID                   "6c5f01a7-84e9-4384-bd69-70f675c1ffdd"
+    }
+    Block {
+      BlockType               Goto
+      Name                    "Goto2"
+      Position                [665, 363, 725, 377]
+      ShowName                off
+      GotoTag                 "C3"
+      TagVisibility           "local"
+      FontSize                10
+      #GUID                   "c263b618-ca52-486d-9d5b-d924af4f517f"
+    }
+    Block {
+      BlockType               Goto
+      Name                    "Goto3"
+      Position                [665, 83, 725, 97]
+      ShowName                off
+      GotoTag                 "C0"
+      TagVisibility           "local"
+      FontSize                10
+      #GUID                   "2a966f07-aaad-4a1b-9102-647142df131f"
+    }
+    Block {
+      BlockType               Goto
+      Name                    "Goto5"
+      Position                [665, 138, 725, 152]
+      ShowName                off
+      GotoTag                 "C1"
+      TagVisibility           "local"
+      FontSize                10
+      #GUID                   "44e90ad8-50d4-41cd-855b-b289f8b0c97b"
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "Inlet_valve"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [455, 130, 555, 160]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "2b76ecd4-123d-4288-8d27-70c115df276e"
+      System {
+        Name                    "Inlet_valve"
+        __CopyByReference       off
+        #GUID                   "2b76ecd4-123d-4288-8d27-70c115df276e"
+        Block {
+          BlockType               Inport
+          Name                    "Run"
+          Position                [20, 23, 50, 37]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "e83c8c70-d2b6-4a46-a587-7eb8d051bd45"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "TIMER"
+          Ports                   [3, 3, 0, 0, 0]
+          Position                [95, 23, 135, 57]
+          SourceBlock             "logiclib/TIMER"
+          mode                    "2: Delayed ON"
+          pt                      10
+          FontSize                10
+          #GUID                   "000d3372-07e6-4412-a141-6bb56fe4df73"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Done"
+          Position                [205, 23, 235, 37]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "caa82c86-e260-4b08-bed2-a8668f122a6b"
+        }
+        Line {
+          SrcBlock                "Run"
+          SrcPort                 1
+          DstBlock                "TIMER"
+          DstPort                 1
+          #GUID                   "fc72437d-0853-4673-aa0a-25169770eb00"
+        }
+        Line {
+          SrcBlock                "TIMER"
+          SrcPort                 1
+          DstBlock                "Done"
+          DstPort                 1
+          #GUID                   "47141674-be5d-424a-8929-0e37b7666201"
+        }
+      }
+    }
+    Block {
+      BlockType               Reference
+      Name                    "LPBRK"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [640, 85, 650, 95]
+      SourceBlock             "execlib/LPBRK"
+      ShowName                off
+      RB                      off
+      #GUID                   "b9fab678-87be-4fe5-8d1e-41c684dbdaa2"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "LPBRK1"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [640, 140, 650, 150]
+      SourceBlock             "execlib/LPBRK"
+      ShowName                off
+      RB                      off
+      #GUID                   "b2878cf3-8c88-491e-8672-3b0bbe6c2b57"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "LPBRK2"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [640, 295, 650, 305]
+      SourceBlock             "execlib/LPBRK"
+      ShowName                off
+      RB                      off
+      #GUID                   "c6f58298-f252-41ff-bb07-d17711324bc2"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "LPBRK3"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [640, 365, 650, 375]
+      SourceBlock             "execlib/LPBRK"
+      ShowName                off
+      RB                      off
+      #GUID                   "3c194dea-3e91-408a-b695-eb1dc39fca45"
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "Outlet_valve"
+      Ports                   [1, 1, 0, 0, 0]
+      Position                [455, 405, 555, 435]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "7286667a-0ac2-4fec-9136-97c5c538216c"
+      System {
+        Name                    "Outlet_valve"
+        __CopyByReference       off
+        #GUID                   "7286667a-0ac2-4fec-9136-97c5c538216c"
+        Block {
+          BlockType               Inport
+          Name                    "Run"
+          Position                [20, 23, 50, 37]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "dc3b6487-38ac-4015-b35f-bb4ab2e7f7f7"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "TIMER"
+          Ports                   [3, 3, 0, 0, 0]
+          Position                [95, 23, 135, 57]
+          SourceBlock             "logiclib/TIMER"
+          mode                    "2: Delayed ON"
+          pt                      10
+          FontSize                10
+          #GUID                   "b6271125-54dc-43a6-b3ea-c90ee2135dec"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Done"
+          Position                [205, 23, 235, 37]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "aee323a7-43e3-4c43-9d99-ea2a596240ee"
+        }
+        Line {
+          SrcBlock                "Run"
+          SrcPort                 1
+          DstBlock                "TIMER"
+          DstPort                 1
+          #GUID                   "f112027a-a600-467a-a1d1-402e9d2da788"
+        }
+        Line {
+          SrcBlock                "TIMER"
+          SrcPort                 1
+          DstBlock                "Done"
+          DstPort                 1
+          #GUID                   "68a8b9b8-515c-4484-a57a-5b54f86d5398"
+        }
+      }
+    }
+    Block {
+      BlockType               Reference
+      Name                    "RTOV"
+      Ports                   [9, 1, 0, 0, 0]
+      Position                [455, 457, 500, 553]
+      SourceBlock             "matrixlib/RTOV"
+      nmax                    8
+      offset                  0
+      n                       8
+      etype                   "8: Double (F64)"
+      #GUID                   "d0dd4412-792d-4f79-aa91-6263441bd515"
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "Subcycle"
+      Ports                   [2, 2, 0, 0, 0]
+      Position                [455, 183, 570, 267]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "c93d2aaf-a5e0-4e3c-a55f-3535ef49ab99"
+      System {
+        Name                    "Subcycle"
+        __CopyByReference       off
+        #GUID                   "c93d2aaf-a5e0-4e3c-a55f-3535ef49ab99"
+        Block {
+          BlockType               Inport
+          Name                    "Run"
+          Position                [265, 113, 295, 127]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "5045507c-a1e5-48e4-9d8a-4fcbb43b0bb1"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "SequenceNo"
+          Position                [380, 233, 410, 247]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          ForegroundColor         "red"
+          FontSize                10
+          #GUID                   "0aded2c5-5d73-4dee-8166-d04432c41646"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "AND"
+          Ports                   [2, 2, 0, 0, 0]
+          Position                [525, 113, 560, 137]
+          SourceBlock             "logiclib/AND"
+          #GUID                   "3914635d-a313-444b-8e28-7dc8992a602d"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "ATMT"
+          Ports                   [20, 19, 0, 0, 0]
+          Position                [255, 161, 310, 369]
+          SourceBlock             "logiclib/ATMT"
+          morestps                off
+          sfcname                 ""
+          STT                     [0 0 1; 1 1 2; 2 2 3; 3 3 4; 4 4 5; 5 5 0]
+          touts                   [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+          FontSize                10
+          #GUID                   "84566b89-2ffe-4e7e-a202-8e0211822304"
+        }
+        Block {
+          BlockType               SubSystem
+          Name                    "Bottom_Shoot"
+          Ports                   [2, 1, 0, 0, 0]
+          Position                [525, 317, 620, 348]
+          FontSize                10
+          ShowPortLabels          on
+          MaskType                "REX sequence"
+          MaskIconFrame           on
+          MaskIconOpaque          on
+          MaskIconRotate          "none"
+          MaskIconUnits           "autoscale"
+          #GUID                   "8cf72315-712c-4c2d-ac98-53452754981f"
+          System {
+            Name                    "Bottom_Shoot"
+            __CopyByReference       off
+            #GUID                   "8cf72315-712c-4c2d-ac98-53452754981f"
+            Block {
+              BlockType               Inport
+              Name                    "Run"
+              Position                [220, 48, 250, 62]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "3618f5ea-adb8-4983-a936-5e59ecd4f544"
+            }
+            Block {
+              BlockType               Inport
+              Name                    "SequenceNo"
+              Position                [220, 123, 250, 137]
+              Port                    2
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "78f47070-6b28-4e5d-b9a9-ece230d5827e"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "EDGE"
+              Ports                   [1, 1, 0, 0, 0]
+              Position                [310, 103, 335, 117]
+              SourceBlock             "logiclib/EDGE"
+              iedge                   "1: Rising edge"
+              #GUID                   "937f964d-acce-41d5-81e7-2d271494be1e"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "NOT"
+              Ports                   [1, 1, 0, 0, 0]
+              Position                [365, 103, 390, 117]
+              SourceBlock             "logiclib/NOT"
+              #GUID                   "53ab0562-d3fb-4a2b-a02d-c3b3bf4e2d6e"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "PYTHON"
+              Ports                   [18, 18, 0, 0, 0]
+              Position                [420, 100, 485, 290]
+              SourceBlock             "langlib/PYTHON"
+              srcname                 "shoot.py"
+              embedded                on
+              p0                      "/mnt/external_hdd/ATMTRexTest/sequences"
+              p1                      "bottom"
+              p2                      1
+              p3                      1000
+              p4                      10
+              p5                      ""
+              p6                      ""
+              p7                      ""
+              p8                      ""
+              p9                      ""
+              p10                     ""
+              p11                     ""
+              p12                     ""
+              p13                     ""
+              p14                     ""
+              p15                     ""
+              #RTFlags                1025
+              FontSize                10
+              #GUID                   "54ed4285-b64c-482d-a86d-60dc75ec50ac"
+            }
+            Block {
+              BlockType               Outport
+              Name                    "Done"
+              Position                [555, 48, 585, 62]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "11a6eb01-a589-4226-98b9-f09cd1800daf"
+            }
+            Line {
+              SrcBlock                "EDGE"
+              SrcPort                 1
+              DstBlock                "NOT"
+              DstPort                 1
+              #GUID                   "a7f8b911-3152-47bf-8f77-2c462ab07e01"
+            }
+            Line {
+              SrcBlock                "NOT"
+              SrcPort                 1
+              DstBlock                "PYTHON"
+              DstPort                 1
+              #GUID                   "8a29b5ef-0ea0-4cc8-b2ca-9c9f06283ce6"
+            }
+            Line {
+              SrcBlock                "Run"
+              SrcPort                 1
+              Points                  [25, 0]
+              #GUID                   "63a0e0a7-1c36-45cb-bfb1-c942d9fd8ef0"
+              Branch {
+                DstBlock                "Done"
+                DstPort                 1
+                #GUID                   "05c4ed77-8fea-4a50-91d1-b657a5819408"
+              }
+              Branch {
+                Points                  [0, 55]
+                DstBlock                "EDGE"
+                DstPort                 1
+                #GUID                   "dd78e408-206b-4b58-8c00-b6787eed8ead"
+              }
+            }
+            Line {
+              SrcBlock                "SequenceNo"
+              SrcPort                 1
+              DstBlock                "PYTHON"
+              DstPort                 3
+              #GUID                   "6064bb02-28e2-4ee0-b4f7-8500ef4769fe"
+            }
+          }
+        }
+        Block {
+          BlockType               SubSystem
+          Name                    "Bottom_lights_OFF"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [525, 371, 620, 399]
+          FontSize                10
+          ShowPortLabels          on
+          MaskType                "REX sequence"
+          MaskIconFrame           on
+          MaskIconOpaque          on
+          MaskIconRotate          "none"
+          MaskIconUnits           "autoscale"
+          #GUID                   "7ffd8c73-0416-429f-b3cb-d402e943a395"
+          System {
+            Name                    "Bottom_lights_OFF"
+            __CopyByReference       off
+            #GUID                   "7ffd8c73-0416-429f-b3cb-d402e943a395"
+            Block {
+              BlockType               Inport
+              Name                    "Run"
+              Position                [20, 23, 50, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "c43fd2c1-a03a-45e9-9843-6c1b7a310385"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "TIMER"
+              Ports                   [3, 3, 0, 0, 0]
+              Position                [95, 23, 135, 57]
+              SourceBlock             "logiclib/TIMER"
+              mode                    "2: Delayed ON"
+              pt                      1
+              FontSize                10
+              #GUID                   "ff231646-7cc5-4419-abc9-dfafec556a95"
+            }
+            Block {
+              BlockType               Outport
+              Name                    "Done"
+              Position                [205, 23, 235, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "93794c1e-b932-4ccb-b896-f073aa7cfa27"
+            }
+            Line {
+              SrcBlock                "Run"
+              SrcPort                 1
+              DstBlock                "TIMER"
+              DstPort                 1
+              #GUID                   "05c21d19-7d7e-47b9-89f5-1f3fd303956b"
+            }
+            Line {
+              SrcBlock                "TIMER"
+              SrcPort                 1
+              DstBlock                "Done"
+              DstPort                 1
+              #GUID                   "6b7b88e7-0e32-4a8d-bf2b-66a465d1ded2"
+            }
+          }
+        }
+        Block {
+          BlockType               From
+          Name                    "From"
+          Position                [165, 213, 225, 227]
+          ShowName                off
+          GotoTag                 "C1"
+          FontSize                10
+          #GUID                   "7891a9f4-0e52-402e-a544-674eedd0736a"
+        }
+        Block {
+          BlockType               From
+          Name                    "From1"
+          Position                [100, 223, 160, 237]
+          ShowName                off
+          GotoTag                 "C2"
+          FontSize                10
+          #GUID                   "bad362a8-9edf-46b0-86cc-5a4f4c71715b"
+        }
+        Block {
+          BlockType               From
+          Name                    "From2"
+          Position                [165, 233, 225, 247]
+          ShowName                off
+          GotoTag                 "C3"
+          FontSize                10
+          #GUID                   "e4feb637-73a9-4843-b4db-c24f1e8fbd91"
+        }
+        Block {
+          BlockType               From
+          Name                    "From3"
+          Position                [100, 243, 160, 257]
+          ShowName                off
+          GotoTag                 "C4"
+          FontSize                10
+          #GUID                   "0444450f-36c5-47a9-87b3-40d3052b8177"
+        }
+        Block {
+          BlockType               From
+          Name                    "From4"
+          Position                [165, 253, 225, 267]
+          ShowName                off
+          GotoTag                 "C5"
+          FontSize                10
+          #GUID                   "7ede83a5-89a9-4bc7-bdc8-c011dce0e324"
+        }
+        Block {
+          BlockType               From
+          Name                    "From5"
+          Position                [100, 203, 160, 217]
+          ShowName                off
+          GotoTag                 "C0"
+          FontSize                10
+          #GUID                   "7ece45ec-ef65-4f14-ba20-69a9335f38dc"
+        }
+        Block {
+          BlockType               SubSystem
+          Name                    "Front_Shoot"
+          Ports                   [2, 1, 0, 0, 0]
+          Position                [525, 216, 620, 249]
+          FontSize                10
+          ShowPortLabels          on
+          MaskType                "REX sequence"
+          MaskIconFrame           on
+          MaskIconOpaque          on
+          MaskIconRotate          "none"
+          MaskIconUnits           "autoscale"
+          #GUID                   "f0d0004b-7643-4c67-b3d6-fa6016ac67c0"
+          System {
+            Name                    "Front_Shoot"
+            __CopyByReference       off
+            #GUID                   "f0d0004b-7643-4c67-b3d6-fa6016ac67c0"
+            Block {
+              BlockType               Inport
+              Name                    "Run"
+              Position                [220, 48, 250, 62]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "afd02f9c-8277-41ef-b16e-4726a01b13fc"
+            }
+            Block {
+              BlockType               Inport
+              Name                    "SequenceNo"
+              Position                [220, 123, 250, 137]
+              Port                    2
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "af08bb92-febf-4629-bcdd-c4de58fcdf2e"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "EDGE"
+              Ports                   [1, 1, 0, 0, 0]
+              Position                [310, 103, 335, 117]
+              SourceBlock             "logiclib/EDGE"
+              iedge                   "1: Rising edge"
+              #GUID                   "ed7fe937-afc1-48ab-9cf1-95b887466f9c"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "NOT"
+              Ports                   [1, 1, 0, 0, 0]
+              Position                [365, 103, 390, 117]
+              SourceBlock             "logiclib/NOT"
+              #GUID                   "5403b59c-a666-4c9d-849e-e7d5a362be22"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "PYTHON"
+              Ports                   [18, 18, 0, 0, 0]
+              Position                [420, 100, 485, 290]
+              SourceBlock             "langlib/PYTHON"
+              srcname                 "shoot.py"
+              embedded                on
+              p0                      "/mnt/external_hdd/ATMTRexTest/sequences"
+              p1                      "front"
+              p2                      1
+              p3                      1000
+              p4                      10
+              p5                      ""
+              p6                      ""
+              p7                      ""
+              p8                      ""
+              p9                      ""
+              p10                     ""
+              p11                     ""
+              p12                     ""
+              p13                     ""
+              p14                     ""
+              p15                     ""
+              #RTFlags                1025
+              FontSize                10
+              #GUID                   "f47c00e8-3c1a-452c-80f9-eddb8608f80a"
+            }
+            Block {
+              BlockType               Outport
+              Name                    "Done"
+              Position                [555, 48, 585, 62]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "44acad80-c659-4d88-b323-4a1ccb9181c2"
+            }
+            Line {
+              SrcBlock                "EDGE"
+              SrcPort                 1
+              DstBlock                "NOT"
+              DstPort                 1
+              #GUID                   "a949c0c2-21d5-4023-ab42-2e645c88c804"
+            }
+            Line {
+              SrcBlock                "NOT"
+              SrcPort                 1
+              DstBlock                "PYTHON"
+              DstPort                 1
+              #GUID                   "7173fb14-1871-456d-a1e0-51bbe2649fee"
+            }
+            Line {
+              SrcBlock                "Run"
+              SrcPort                 1
+              Points                  [25, 0]
+              #GUID                   "fded18ca-e2da-4346-8cc8-6140108a1fa4"
+              Branch {
+                DstBlock                "Done"
+                DstPort                 1
+                #GUID                   "e7fc875d-1769-45df-a46e-abae26189345"
+              }
+              Branch {
+                Points                  [0, 55]
+                DstBlock                "EDGE"
+                DstPort                 1
+                #GUID                   "a7eeb6d9-27b3-406d-ba1f-72b47d5924fe"
+              }
+            }
+            Line {
+              SrcBlock                "SequenceNo"
+              SrcPort                 1
+              DstBlock                "PYTHON"
+              DstPort                 3
+              #GUID                   "ef013548-569c-4a59-98d2-20d2b35091ea"
+            }
+          }
+        }
+        Block {
+          BlockType               SubSystem
+          Name                    "Front_lights_ON"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [525, 171, 620, 199]
+          FontSize                10
+          ShowPortLabels          on
+          MaskType                "REX sequence"
+          MaskIconFrame           on
+          MaskIconOpaque          on
+          MaskIconRotate          "none"
+          MaskIconUnits           "autoscale"
+          #GUID                   "6b394e5a-434a-405f-8d52-5939a383d245"
+          System {
+            Name                    "Front_lights_ON"
+            __CopyByReference       off
+            #GUID                   "6b394e5a-434a-405f-8d52-5939a383d245"
+            Block {
+              BlockType               Inport
+              Name                    "Run"
+              Position                [20, 23, 50, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "53f5ba98-5a15-43a2-91ac-3b9287900057"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "TIMER"
+              Ports                   [3, 3, 0, 0, 0]
+              Position                [95, 23, 135, 57]
+              SourceBlock             "logiclib/TIMER"
+              mode                    "2: Delayed ON"
+              pt                      1
+              FontSize                10
+              #GUID                   "463438da-f15a-4741-956d-b6a8d9869403"
+            }
+            Block {
+              BlockType               Outport
+              Name                    "Done"
+              Position                [205, 23, 235, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "ca28f88a-cf4e-474f-8b13-5248877d4414"
+            }
+            Line {
+              SrcBlock                "Run"
+              SrcPort                 1
+              DstBlock                "TIMER"
+              DstPort                 1
+              #GUID                   "e2b6546c-4ad0-43b8-9ef6-9a233c7b8e36"
+            }
+            Line {
+              SrcBlock                "TIMER"
+              SrcPort                 1
+              DstBlock                "Done"
+              DstPort                 1
+              #GUID                   "80c21338-cbf7-454c-8cca-49dc8d649041"
+            }
+          }
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto"
+          Position                [750, 178, 810, 192]
+          ShowName                off
+          GotoTag                 "C1"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "1271329d-0486-4faf-a58c-23c2bd1e5595"
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto1"
+          Position                [750, 228, 810, 242]
+          ShowName                off
+          GotoTag                 "C2"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "f8049e43-2098-4ac4-a753-5ea1e47bd771"
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto2"
+          Position                [750, 279, 810, 291]
+          ShowName                off
+          GotoTag                 "C3"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "76b28fe4-9663-4548-8c0c-d3586eb45770"
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto3"
+          Position                [750, 328, 810, 342]
+          ShowName                off
+          GotoTag                 "C4"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "23d139df-1f07-43d6-aecd-a663ca65139d"
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto4"
+          Position                [750, 378, 810, 392]
+          ShowName                off
+          GotoTag                 "C5"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "fc38025e-d8bb-4c3c-850e-3b0672e3d4c2"
+        }
+        Block {
+          BlockType               Goto
+          Name                    "Goto5"
+          Position                [750, 113, 810, 127]
+          ShowName                off
+          GotoTag                 "C0"
+          TagVisibility           "local"
+          FontSize                10
+          #GUID                   "91cc9d3b-10db-4126-8602-d2a23b5d7d2f"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 115, 735, 125]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "af62cecf-7b3e-411f-ab06-c182a141032d"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK1"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 180, 735, 190]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "e91f2651-b663-47dd-bb0c-724861e97e38"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK2"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 230, 735, 240]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "5b63345f-001f-476e-815e-738527406c8f"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK3"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 280, 735, 290]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "486b79d8-db2e-43fe-bd3b-3b55dc1059a3"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK4"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 330, 735, 340]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "f1aff7e2-d688-4bb5-b9a1-7435fbf966b7"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "LPBRK5"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [725, 380, 735, 390]
+          SourceBlock             "execlib/LPBRK"
+          ShowName                off
+          RB                      off
+          #GUID                   "420a6913-f298-436e-b6f6-6b97c2acc036"
+        }
+        Block {
+          BlockType               SubSystem
+          Name                    "Lights_switch"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [525, 271, 620, 299]
+          FontSize                10
+          ShowPortLabels          on
+          MaskType                "REX sequence"
+          MaskIconFrame           on
+          MaskIconOpaque          on
+          MaskIconRotate          "none"
+          MaskIconUnits           "autoscale"
+          #GUID                   "d37894fd-5bd4-4f12-8b27-7e849b42ed5a"
+          System {
+            Name                    "Lights_switch"
+            __CopyByReference       off
+            #GUID                   "d37894fd-5bd4-4f12-8b27-7e849b42ed5a"
+            Block {
+              BlockType               Inport
+              Name                    "Run"
+              Position                [20, 23, 50, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "3f70d601-a5aa-4b84-b285-ff1dc72fc663"
+            }
+            Block {
+              BlockType               Reference
+              Name                    "TIMER"
+              Ports                   [3, 3, 0, 0, 0]
+              Position                [95, 23, 135, 57]
+              SourceBlock             "logiclib/TIMER"
+              mode                    "2: Delayed ON"
+              pt                      1
+              FontSize                10
+              #GUID                   "3df5fe3f-1e83-47ca-9025-b58a661d5de7"
+            }
+            Block {
+              BlockType               Outport
+              Name                    "Done"
+              Position                [205, 23, 235, 37]
+              Port                    1
+              OutDataTypeStr          "Inherit: auto"
+              Description             ""
+              FontSize                10
+              #GUID                   "5b77ab11-ec01-4023-933b-28221c77e56a"
+            }
+            Line {
+              SrcBlock                "Run"
+              SrcPort                 1
+              DstBlock                "TIMER"
+              DstPort                 1
+              #GUID                   "25192f68-fe2f-43ee-8728-22f9eb3c2e98"
+            }
+            Line {
+              SrcBlock                "TIMER"
+              SrcPort                 1
+              DstBlock                "Done"
+              DstPort                 1
+              #GUID                   "1ebf2fb6-fc3c-4726-9235-49487e82e7af"
+            }
+          }
+        }
+        Block {
+          BlockType               Reference
+          Name                    "RTOV"
+          Ports                   [9, 1, 0, 0, 0]
+          Position                [525, 432, 570, 528]
+          SourceBlock             "matrixlib/RTOV"
+          nmax                    8
+          offset                  0
+          n                       8
+          etype                   "8: Double (F64)"
+          FontSize                10
+          #GUID                   "399b433a-87dd-4e7f-9315-e31bc177cf87"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "RTOV1"
+          Ports                   [9, 1, 0, 0, 0]
+          Position                [825, 32, 870, 128]
+          SourceBlock             "matrixlib/RTOV"
+          nmax                    8
+          offset                  0
+          n                       8
+          etype                   "8: Double (F64)"
+          FontSize                10
+          #GUID                   "6c7712a7-dbfe-43a3-be39-8e40588cbdf9"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "TIMER"
+          Ports                   [3, 3, 0, 0, 0]
+          Position                [650, 378, 690, 412]
+          SourceBlock             "logiclib/TIMER"
+          mode                    "2: Delayed ON"
+          pt                      0
+          FontSize                10
+          #GUID                   "e332c69c-af1d-471d-b686-1753224667e0"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "StateSig"
+          Position                [885, 473, 915, 487]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "bf7f46e1-269c-4615-abe6-2e189397df19"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "StepSig"
+          Position                [935, 73, 965, 87]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          FontSize                10
+          #GUID                   "b3c8983e-aa42-4b23-b976-0879853f1d20"
+        }
+        Line {
+          SrcBlock                "AND"
+          SrcPort                 1
+          Points                  [110, 0]
+          #GUID                   "3abba52d-9c48-4292-a7b0-a7db91fe4810"
+          Branch {
+            DstBlock                "LPBRK"
+            DstPort                 1
+            #GUID                   "34f0026d-0fd9-4260-966e-0a3dbe0d3d23"
+          }
+          Branch {
+            Points                  [0, -70]
+            DstBlock                "RTOV1"
+            DstPort                 2
+            #GUID                   "ff4dc0b8-0076-4f8c-b5a8-c25fb83e6ec8"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 1
+          Points                  [190, 0]
+          #GUID                   "60714f0a-e612-40ae-b373-b1afa678da3f"
+          Branch {
+            Points                  [0, -45]
+            DstBlock                "AND"
+            DstPort                 2
+            #GUID                   "94d08960-a679-4f1c-ad09-d550bb33e3ec"
+          }
+          Branch {
+            Points                  [0, 275]
+            DstBlock                "RTOV"
+            DstPort                 2
+            #GUID                   "bc206fd6-2adf-4daf-8b22-5e474fa1d903"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 2
+          Points                  [180, 0]
+          #GUID                   "3f451e4c-d1ce-443e-b5ae-299484645926"
+          Branch {
+            DstBlock                "Front_lights_ON"
+            DstPort                 1
+            #GUID                   "66cd755f-fae0-4c2d-b18c-a378391dd7da"
+          }
+          Branch {
+            Points                  [0, 275]
+            DstBlock                "RTOV"
+            DstPort                 3
+            #GUID                   "ed8bcad7-55d7-4c50-a684-8db90336c3af"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 3
+          Points                  [170, 0; 0, 30]
+          #GUID                   "fdf41ffb-a29f-4a1e-8ad3-08e63104f5cc"
+          Branch {
+            DstBlock                "Front_Shoot"
+            DstPort                 1
+            #GUID                   "57eb6f90-ba5e-4184-971c-c8b5bc6d3bbb"
+          }
+          Branch {
+            Points                  [0, 245]
+            DstBlock                "RTOV"
+            DstPort                 4
+            #GUID                   "bbdc7b42-6eef-40fd-ac39-1e908f58a68c"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 4
+          Points                  [160, 0; 0, 80]
+          #GUID                   "127da149-e112-44d2-a427-2fbbbaf52538"
+          Branch {
+            DstBlock                "Lights_switch"
+            DstPort                 1
+            #GUID                   "ecbe269c-e148-444d-89f9-130277d0a4be"
+          }
+          Branch {
+            Points                  [0, 195]
+            DstBlock                "RTOV"
+            DstPort                 5
+            #GUID                   "370cc588-a393-47bc-b2f6-be096972549c"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 5
+          Points                  [150, 0; 0, 110]
+          #GUID                   "a4372836-39d3-4c14-aa46-a1e0a6ef145a"
+          Branch {
+            DstBlock                "Bottom_Shoot"
+            DstPort                 1
+            #GUID                   "ed50d52e-876c-47ef-98fc-4131b3593884"
+          }
+          Branch {
+            Points                  [0, 165]
+            DstBlock                "RTOV"
+            DstPort                 6
+            #GUID                   "f0790e06-298d-4043-9d8d-511d8a41b222"
+          }
+        }
+        Line {
+          SrcBlock                "ATMT"
+          SrcPort                 6
+          Points                  [140, 0; 0, 160]
+          #GUID                   "d010b19c-ce79-4e76-8d05-b58abab5ede8"
+          Branch {
+            DstBlock                "Bottom_lights_OFF"
+            DstPort                 1
+            #GUID                   "ce3e9437-0860-475f-8f1b-238819a90fa8"
+          }
+          Branch {
+            Points                  [0, 115]
+            DstBlock                "RTOV"
+            DstPort                 7
+            #GUID                   "ea602538-3da1-4a99-ab84-b1e2dd6e40c2"
+          }
+        }
+        Line {
+          SrcBlock                "Bottom_Shoot"
+          SrcPort                 1
+          Points                  [70, 0]
+          #GUID                   "3746f19b-05a4-4189-bc12-64248effcb42"
+          Branch {
+            DstBlock                "LPBRK4"
+            DstPort                 1
+            #GUID                   "b8ff0246-c2a0-410c-bf75-122910afd9a3"
+          }
+          Branch {
+            Points                  [0, -245]
+            DstBlock                "RTOV1"
+            DstPort                 6
+            #GUID                   "7509de0a-7e31-4e16-acf2-80bf1e94d611"
+          }
+        }
+        Line {
+          SrcBlock                "Bottom_lights_OFF"
+          SrcPort                 1
+          DstBlock                "TIMER"
+          DstPort                 1
+          #GUID                   "30d891f6-fe1f-4d2f-8e3f-cade5d88163b"
+        }
+        Line {
+          SrcBlock                "From"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 6
+          #GUID                   "91107e98-d5ba-4e9d-89fb-93f053691e56"
+        }
+        Line {
+          SrcBlock                "From1"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 7
+          #GUID                   "30ec2ac9-5754-4f75-b0d8-d9c6e36624c9"
+        }
+        Line {
+          SrcBlock                "From2"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 8
+          #GUID                   "aadf382e-c2fc-48dc-8e5d-347cf1b625d9"
+        }
+        Line {
+          SrcBlock                "From3"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 9
+          #GUID                   "407216e4-8818-4188-9fc6-e4695c7bef6b"
+        }
+        Line {
+          SrcBlock                "From4"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 10
+          #GUID                   "87f68107-9f31-4279-aa40-753a45d9726a"
+        }
+        Line {
+          SrcBlock                "From5"
+          SrcPort                 1
+          DstBlock                "ATMT"
+          DstPort                 5
+          #GUID                   "fd158267-1376-428e-aeca-c5cf85d171bd"
+        }
+        Line {
+          SrcBlock                "Front_Shoot"
+          SrcPort                 1
+          Points                  [60, 0]
+          #GUID                   "1e4931d4-9ca8-4c81-936d-9bc9f87ef67d"
+          Branch {
+            DstBlock                "LPBRK2"
+            DstPort                 1
+            #GUID                   "e064379f-76cb-4ab0-a6e1-36500f721117"
+          }
+          Branch {
+            Points                  [0, -165]
+            DstBlock                "RTOV1"
+            DstPort                 4
+            #GUID                   "3f524acf-e82e-4f73-953a-6bd79934a370"
+          }
+        }
+        Line {
+          SrcBlock                "Front_lights_ON"
+          SrcPort                 1
+          Points                  [50, 0]
+          #GUID                   "18cc3e64-78e6-4746-b2df-fa43b1788327"
+          Branch {
+            DstBlock                "LPBRK1"
+            DstPort                 1
+            #GUID                   "2df4e806-57ef-459c-a9ae-0e6bd27c32a3"
+          }
+          Branch {
+            Points                  [5, 0; 0, -125]
+            DstBlock                "RTOV1"
+            DstPort                 3
+            #GUID                   "21fec498-0bbf-43db-8cdb-c1378f713eb8"
+          }
+        }
+        Line {
+          SrcBlock                "LPBRK"
+          SrcPort                 1
+          DstBlock                "Goto5"
+          DstPort                 1
+          #GUID                   "626f66dd-38b5-433e-95bc-a7ee0863f701"
+        }
+        Line {
+          SrcBlock                "LPBRK1"
+          SrcPort                 1
+          DstBlock                "Goto"
+          DstPort                 1
+          #GUID                   "0e5a6817-1c8c-4828-9444-c68bbc0f7c06"
+        }
+        Line {
+          SrcBlock                "LPBRK2"
+          SrcPort                 1
+          DstBlock                "Goto1"
+          DstPort                 1
+          #GUID                   "141c6872-bcbb-41ef-b737-65ab15f68569"
+        }
+        Line {
+          SrcBlock                "LPBRK3"
+          SrcPort                 1
+          DstBlock                "Goto2"
+          DstPort                 1
+          #GUID                   "f59dda93-7f78-4733-92a1-57d5c50d9960"
+        }
+        Line {
+          SrcBlock                "LPBRK4"
+          SrcPort                 1
+          DstBlock                "Goto3"
+          DstPort                 1
+          #GUID                   "81099515-cbf6-4bd9-b3a6-2365927e474a"
+        }
+        Line {
+          SrcBlock                "LPBRK5"
+          SrcPort                 1
+          DstBlock                "Goto4"
+          DstPort                 1
+          #GUID                   "a9343a8a-0026-4cc7-9184-e3a75d95c0f8"
+        }
+        Line {
+          SrcBlock                "Lights_switch"
+          SrcPort                 1
+          Points                  [65, 0]
+          #GUID                   "4ca5fe02-4d1d-4991-8e8c-51bc22f6db5c"
+          Branch {
+            DstBlock                "LPBRK3"
+            DstPort                 1
+            #GUID                   "57c6aafa-53eb-46c5-8d55-ab5161955476"
+          }
+          Branch {
+            Points                  [0, -205]
+            DstBlock                "RTOV1"
+            DstPort                 5
+            #GUID                   "67d372c9-b906-43db-9aca-011c5280215b"
+          }
+        }
+        Line {
+          SrcBlock                "RTOV"
+          SrcPort                 1
+          DstBlock                "StateSig"
+          DstPort                 1
+          #GUID                   "3be72cce-2b32-463a-9851-7223cde0f539"
+        }
+        Line {
+          SrcBlock                "RTOV1"
+          SrcPort                 1
+          DstBlock                "StepSig"
+          DstPort                 1
+          #GUID                   "0a2e91c4-43dc-4177-b4f6-af369873523a"
+        }
+        Line {
+          SrcBlock                "Run"
+          SrcPort                 1
+          DstBlock                "AND"
+          DstPort                 1
+          #GUID                   "e1606729-b61f-44bb-a39e-f3d22d695a69"
+        }
+        Line {
+          SrcBlock                "SequenceNo"
+          SrcPort                 1
+          Points                  [30, 0]
+          #Color                  "red"
+          #GUID                   "ef1d4f39-744d-4525-b377-4c7b1268f34f"
+          Branch {
+            Points                  [0, 100]
+            DstBlock                "Bottom_Shoot"
+            DstPort                 2
+            #Color                  "red"
+            #GUID                   "afa0f409-4fee-43ae-acea-e72d55ccf8b5"
+          }
+          Branch {
+            DstBlock                "Front_Shoot"
+            DstPort                 2
+            #Color                  "red"
+            #GUID                   "7e772c32-09a1-4384-abbd-e5a0f7dc3919"
+          }
+        }
+        Line {
+          SrcBlock                "TIMER"
+          SrcPort                 1
+          Points                  [5, 0]
+          #GUID                   "00870bd5-3afd-4a52-a1e3-d123a5e59403"
+          Branch {
+            DstBlock                "LPBRK5"
+            DstPort                 1
+            #GUID                   "b2f337bc-bdb5-4610-8936-66934b6184ec"
+          }
+          Branch {
+            Points                  [0, -285]
+            DstBlock                "RTOV1"
+            DstPort                 7
+            #GUID                   "8d31bafb-bb15-4872-87ac-2530fac29f80"
+          }
+        }
+        Annotation {
+          Position                [480, 90]
+          Text                    "Q0: Default state - nothing happens"
+          HorizontalAlignment     "left"
+          VerticalAlignment       "top"
+          BackgroundColor         [1, 1, 1]
+          BgOpacity               100
+          FontSize                10
+          Autosize                on
+          Width                   150
+          Height                  150
+          #GUID                   "3e6ef2ef-a113-4aa2-9723-1dae38a01806"
+        }
+        Annotation {
+          Position                [205, 95]
+          Text                    "Control input - allow next cycle"
+          HorizontalAlignment     "left"
+          VerticalAlignment       "top"
+          #ImgPth                 ""
+          BackgroundColor         [1, 1, 1]
+          ForegroundColor         "black"
+          BgOpacity               100
+          FontName                "Arial"
+          FontWeight              "normal"
+          FontAngle               "normal"
+          FontSize                10
+          Autosize                on
+          Width                   150
+          Height                  150
+          #GUID                   "33d62d1f-036d-4b76-bdd8-63714b39c4ae"
+        }
+        Annotation {
+          Position                [825, 150]
+          Text                    "Monitoring output - step signals"
+          HorizontalAlignment     "left"
+          VerticalAlignment       "top"
+          #ImgPth                 ""
+          BackgroundColor         [1, 1, 1]
+          ForegroundColor         "black"
+          BgOpacity               100
+          FontName                "Arial"
+          FontWeight              "normal"
+          FontAngle               "normal"
+          FontSize                10
+          Autosize                on
+          Width                   150
+          Height                  150
+          #GUID                   "6b5e96ea-e996-4deb-abe3-fd80a875bf1c"
+        }
+        Annotation {
+          Position                [820, 445]
+          Text                    "Monitoring output - state signals"
+          HorizontalAlignment     "left"
+          VerticalAlignment       "top"
+          #ImgPth                 ""
+          BackgroundColor         [1, 1, 1]
+          ForegroundColor         "black"
+          BgOpacity               100
+          FontName                "Arial"
+          FontWeight              "normal"
+          FontAngle               "normal"
+          FontSize                10
+          Autosize                on
+          Width                   150
+          Height                  150
+          #GUID                   "355b97bf-2f78-4e73-9c4c-8fc41ba38da7"
+        }
+        Annotation {
+          Position                [605, 430]
+          Text                    "Time gap between cycles [ s ]"
+          HorizontalAlignment     "left"
+          VerticalAlignment       "top"
+          BackgroundColor         [1, 1, 1]
+          BgOpacity               100
+          FontSize                10
+          Autosize                on
+          Width                   150
+          Height                  150
+          #GUID                   "43b430bd-bbdc-4a87-bb7e-1e198719ee84"
+        }
+      }
+    }
+    Block {
+      BlockType               Reference
+      Name                    "TIMER"
+      Ports                   [3, 3, 0, 0, 0]
+      Position                [455, 293, 495, 327]
+      SourceBlock             "logiclib/TIMER"
+      mode                    "2: Delayed ON"
+      pt                      30
+      FontSize                10
+      #GUID                   "f66f15cc-6007-4bd1-9b1d-ef6d11df6428"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "TIMER1"
+      Ports                   [3, 3, 0, 0, 0]
+      Position                [585, 413, 625, 447]
+      SourceBlock             "logiclib/TIMER"
+      mode                    "2: Delayed ON"
+      pt                      1
+      FontSize                10
+      #GUID                   "57db1f04-7b7b-47e3-bada-2b67c2f8d5a3"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "TRNDV"
+      Ports                   [3, 1, 0, 0, 0]
+      Position                [600, 198, 645, 232]
+      SourceBlock             "arclib/TRNDV"
+      n                       8
+      l                       1000
+      btype                   "8: Double (F64)"
+      pfac                    1
+      afac                    1
+      arc                     0
+      id                      1
+      title                   "Trend Title"
+      timesrc                 "1: CORETIMER"
+      signals                 ""
+      view                    ""
+      #GUID                   "21ec8bea-c9a3-4ae5-8a3e-e923eb6a07f0"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "TRNDV1"
+      Ports                   [3, 1, 0, 0, 0]
+      Position                [650, 238, 695, 272]
+      SourceBlock             "arclib/TRNDV"
+      n                       8
+      l                       1000
+      btype                   "8: Double (F64)"
+      pfac                    1
+      afac                    1
+      arc                     0
+      id                      1
+      title                   "Trend Title"
+      timesrc                 "1: CORETIMER"
+      signals                 ""
+      view                    ""
+      #GUID                   "cbe50dba-987a-4391-ad33-7aded8defc4e"
+    }
+    Block {
+      BlockType               Reference
+      Name                    "TRNDV2"
+      Ports                   [3, 1, 0, 0, 0]
+      Position                [585, 498, 630, 532]
+      SourceBlock             "arclib/TRNDV"
+      n                       8
+      l                       1000
+      btype                   "8: Double (F64)"
+      pfac                    1
+      afac                    1
+      arc                     0
+      id                      1
+      title                   "Trend Title"
+      timesrc                 "1: CORETIMER"
+      signals                 ""
+      view                    ""
+      #GUID                   "4c402673-7156-4e8e-a311-3b44e2229ebc"
+    }
+    Line {
+      SrcBlock                "AND"
+      SrcPort                 1
+      DstBlock                "LPBRK"
+      DstPort                 1
+      #GUID                   "7ef8f821-a6b7-4013-8208-6f3b177fb9fb"
+    }
+    Line {
+      SrcBlock                "AND1"
+      SrcPort                 1
+      DstBlock                "LPBRK3"
+      DstPort                 1
+      #GUID                   "12559e26-7ab4-4649-9af6-69b30e2152c6"
+    }
+    Line {
+      SrcBlock                "ATMT"
+      SrcPort                 1
+      Points                  [20, 0]
+      #GUID                   "34d61b36-c691-4f73-b069-2e3739a3a199"
+      Branch {
+        Points                  [120, 0]
+        #GUID                   "d0154bc6-600f-45fd-bb24-70f670d0668b"
+        Branch {
+          DstBlock                "AND"
+          DstPort                 2
+          #GUID                   "31090a5f-3d34-4a48-af21-46f71687866e"
+        }
+        Branch {
+          DstBlock                "RTOV"
+          DstPort                 2
+          #GUID                   "1eb94455-f280-4fd0-81ce-21749771b5af"
+        }
+      }
+      Branch {
+        Points                  [0, 175]
+        DstBlock                "COUNT"
+        DstPort                 4
+        #GUID                   "fc981dc9-cf09-4f8d-998b-afc638c902fd"
+      }
+    }
+    Line {
+      SrcBlock                "ATMT"
+      SrcPort                 2
+      Points                  [130, 0; 0, 35]
+      #GUID                   "a941de02-58d1-47c5-a46c-48d75e05df69"
+      Branch {
+        DstBlock                "Inlet_valve"
+        DstPort                 1
+        #GUID                   "bee7934c-9bf2-4c24-8bd2-19240f6845da"
+      }
+      Branch {
+        Points                  [0, 340]
+        DstBlock                "RTOV"
+        DstPort                 3
+        #GUID                   "65443f69-0bdc-4af5-b28a-0f7f3d8a3d2c"
+      }
+    }
+    Line {
+      SrcBlock                "ATMT"
+      SrcPort                 3
+      Points                  [120, 0; 0, 85]
+      #GUID                   "5d32529d-e875-4b9d-b50b-b6d7b2732efd"
+      Branch {
+        DstBlock                "Subcycle"
+        DstPort                 1
+        #GUID                   "49a91341-5b96-4093-8d64-01998859702c"
+      }
+      Branch {
+        Points                  [0, 95]
+        #GUID                   "5354bcc3-e560-4a0c-ad3e-02bf7f495173"
+        Branch {
+          Points                  [0, 195]
+          DstBlock                "RTOV"
+          DstPort                 4
+          #GUID                   "81f9b12a-9014-40c3-9894-dc2c12b1daa0"
+        }
+        Branch {
+          DstBlock                "TIMER"
+          DstPort                 1
+          #GUID                   "9db22054-f5e9-4bcd-a7a1-3c76fe37f180"
+        }
+      }
+    }
+    Line {
+      SrcBlock                "ATMT"
+      SrcPort                 4
+      Points                  [110, 0; 0, 230]
+      #GUID                   "6a66f3d4-85c8-4804-954e-3ed2cc2c3fad"
+      Branch {
+        Points                  [0, 60]
+        #GUID                   "bd4dfa70-7072-47cc-b2a9-b71ab657d42c"
+        Branch {
+          DstBlock                "Outlet_valve"
+          DstPort                 1
+          #GUID                   "d35272a7-dabe-4c5a-9432-c56b6ab2d535"
+        }
+        Branch {
+          Points                  [0, 85]
+          DstBlock                "RTOV"
+          DstPort                 5
+          #GUID                   "a47cd6dc-fada-451a-ad17-0945dd8394ad"
+        }
+      }
+      Branch {
+        DstBlock                "DOVER_Inference"
+        DstPort                 1
+        #GUID                   "7c6a37a5-e9d3-431c-85df-1f17a9d5fdab"
+      }
+    }
+    Line {
+      SrcBlock                "CNB"
+      SrcPort                 1
+      Points                  [45, 0; 0, 25]
+      DstBlock                "AND"
+      DstPort                 1
+      #GUID                   "5bedf87d-5f0d-4a6e-9a5e-1e5e17d7b17d"
+    }
+    Line {
+      SrcBlock                "COUNT"
+      SrcPort                 1
+      Points                  [5, 0]
+      #Color                  "red"
+      #GUID                   "c784ca34-f6ea-402d-91d8-64f20777f5ff"
+      Branch {
+        Points                  [0, 130]
+        DstBlock                "DOVER_Inference"
+        DstPort                 2
+        #Color                  "red"
+        #GUID                   "41afd2e9-a588-474b-9aa1-6e016f190f0e"
+      }
+      Branch {
+        DstBlock                "Subcycle"
+        DstPort                 2
+        #Color                  "red"
+        #GUID                   "cc6e1b3f-4165-4631-b5ca-81ed8deedd30"
+      }
+    }
+    Line {
+      SrcBlock                "DOVER_Inference"
+      SrcPort                 1
+      DstBlock                "AND1"
+      DstPort                 1
+      #GUID                   "e9e5cb3e-6462-4317-8493-4d873e9d0691"
+    }
+    Line {
+      SrcBlock                "From"
+      SrcPort                 1
+      DstBlock                "ATMT"
+      DstPort                 6
+      #GUID                   "7f6111df-1a7c-4031-abf4-dab783935640"
+    }
+    Line {
+      SrcBlock                "From4"
+      SrcPort                 1
+      DstBlock                "ATMT"
+      DstPort                 7
+      #GUID                   "f4fc0a20-1093-4057-bb40-723e1cad308b"
+    }
+    Line {
+      SrcBlock                "From6"
+      SrcPort                 1
+      DstBlock                "ATMT"
+      DstPort                 8
+      #GUID                   "baeb1ef1-39e1-472b-8a48-f0ea46dbce76"
+    }
+    Line {
+      SrcBlock                "From7"
+      SrcPort                 1
+      DstBlock                "ATMT"
+      DstPort                 5
+      #GUID                   "168b3afd-cdda-4c38-8133-182aabe9a42e"
+    }
+    Line {
+      SrcBlock                "Inlet_valve"
+      SrcPort                 1
+      DstBlock                "LPBRK1"
+      DstPort                 1
+      #GUID                   "3c574eac-5157-44b3-9284-68bba660f4b3"
+    }
+    Line {
+      SrcBlock                "LPBRK"
+      SrcPort                 1
+      DstBlock                "Goto3"
+      DstPort                 1
+      #GUID                   "2f3e0d69-b4a5-4b5f-9a4c-3eab565e3a01"
+    }
+    Line {
+      SrcBlock                "LPBRK1"
+      SrcPort                 1
+      DstBlock                "Goto5"
+      DstPort                 1
+      #GUID                   "b25b4a73-f891-442a-a607-0f67f02e239c"
+    }
+    Line {
+      SrcBlock                "LPBRK2"
+      SrcPort                 1
+      DstBlock                "Goto1"
+      DstPort                 1
+      #GUID                   "90d09bbe-9b6d-4933-afb7-1ae9804deffc"
+    }
+    Line {
+      SrcBlock                "LPBRK3"
+      SrcPort                 1
+      DstBlock                "Goto2"
+      DstPort                 1
+      #GUID                   "5098080f-651b-409d-9ef3-b04fbe3022c9"
+    }
+    Line {
+      SrcBlock                "Outlet_valve"
+      SrcPort                 1
+      DstBlock                "TIMER1"
+      DstPort                 1
+      #GUID                   "4d45fdc8-2010-4d24-b725-106fec825708"
+    }
+    Line {
+      SrcBlock                "RTOV"
+      SrcPort                 1
+      DstBlock                "TRNDV2"
+      DstPort                 1
+      #GUID                   "9fd45f2e-08f6-46dc-b5b7-afdeea58a4dd"
+    }
+    Line {
+      SrcBlock                "Subcycle"
+      SrcPort                 1
+      DstBlock                "TRNDV"
+      DstPort                 1
+      #GUID                   "2661856a-ab15-4d34-9013-d4291183593f"
+    }
+    Line {
+      SrcBlock                "Subcycle"
+      SrcPort                 2
+      DstBlock                "TRNDV1"
+      DstPort                 1
+      #GUID                   "0595b975-3284-4d97-90b4-9eb600759061"
+    }
+    Line {
+      SrcBlock                "TIMER"
+      SrcPort                 1
+      DstBlock                "LPBRK2"
+      DstPort                 1
+      #GUID                   "a25070c3-f464-4e4e-b172-13ea1e0e149a"
+    }
+    Line {
+      SrcBlock                "TIMER1"
+      SrcPort                 1
+      Points                  [0, -15; -65, 0]
+      DstBlock                "AND1"
+      DstPort                 2
+      #GUID                   "6f0a68c1-674e-463b-b002-9b4633cedcfa"
+    }
+    Annotation {
+      Position                [510, 320]
+      Text                    "How long to run subsycle [ s ]"
+      HorizontalAlignment     "left"
+      VerticalAlignment       "top"
+      BackgroundColor         [1, 1, 1]
+      BgOpacity               100
+      FontSize                10
+      Autosize                on
+      Width                   150
+      Height                  150
+      #GUID                   "b886a263-4b1e-4083-8de2-dc59bf692751"
+    }
+    Annotation {
+      Position                [540, 465]
+      Text                    "Time gap between cycles [ s ]"
+      HorizontalAlignment     "left"
+      VerticalAlignment       "top"
+      BackgroundColor         [1, 1, 1]
+      BgOpacity               100
+      FontSize                10
+      Autosize                on
+      Width                   150
+      Height                  150
+      #GUID                   "65c83c4b-3bc4-44fb-b573-4456310d7e6e"
+    }
+  }
+}

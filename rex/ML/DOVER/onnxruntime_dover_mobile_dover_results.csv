@@ -1,0 +1,12 @@
+Runtime,Model,Sequence,Frames,Inference Time (ms),Total Time (ms),Aesthetic Score,Technical Score,Overall Quality Score
+onnxruntime,dover_mobile,0,16,2067.68,3932.77,-0.6563,0.0361,0.0058
+onnxruntime,dover_mobile,1,16,2071.49,3927.91,-0.6978,0.0422,0.0044
+onnxruntime,dover_mobile,2,16,2009.22,3872.77,-0.6540,-0.0025,0.0040
+onnxruntime,dover_mobile,3,16,2017.19,3927.87,-0.6177,0.0554,0.0098
+onnxruntime,dover_mobile,4,16,2020.00,3952.25,-0.6247,0.0635,0.0100
+onnxruntime,dover_mobile,5,16,2016.12,3895.96,-0.6093,-0.0032,0.0058
+onnxruntime,dover_mobile,6,16,2019.47,3876.73,-0.5279,0.1231,0.0402
+onnxruntime,dover_mobile,7,16,2019.56,3881.85,-0.5974,0.0938,0.0171
+onnxruntime,dover_mobile,8,16,2018.79,3885.59,-0.5736,0.1192,0.0268
+onnxruntime,dover_mobile,9,16,2018.34,3886.99,-0.6050,0.0605,0.0114
+onnxruntime,dover_mobile,10,16,2031.17,3956.68,-0.6191,0.0328,0.0077

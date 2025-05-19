@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Top Prediction,Probability
+onnxruntime,squeezenet,cat,11.78,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.80,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.80,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.80,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.81,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.81,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.79,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.79,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.83,Egyptian cat,20.1530
+onnxruntime,squeezenet,cat,10.78,Egyptian cat,20.1530

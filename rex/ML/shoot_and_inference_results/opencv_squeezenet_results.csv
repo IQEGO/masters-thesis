@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+opencv,squeezenet,cat,40.12,638.36,Unknown class 892,8.1386
+opencv,squeezenet,cat,38.52,635.27,Unknown class 892,8.1004
+opencv,squeezenet,cat,38.19,635.55,Unknown class 892,8.1814
+opencv,squeezenet,cat,38.40,636.64,Unknown class 892,8.0957
+opencv,squeezenet,cat,38.35,638.32,Unknown class 892,8.1532
+opencv,squeezenet,cat,38.23,636.40,Unknown class 892,8.1332
+opencv,squeezenet,cat,38.38,638.20,Unknown class 892,8.1397
+opencv,squeezenet,cat,38.40,635.92,Unknown class 892,8.1123
+opencv,squeezenet,cat,38.31,645.49,Unknown class 892,8.1603
+opencv,squeezenet,cat,38.37,646.62,Unknown class 892,8.1494

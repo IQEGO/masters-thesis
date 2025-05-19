@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+onnxruntime,efficientnet_b0,cat,17.42,610.97,Unknown class 844,6.0710
+onnxruntime,efficientnet_b0,cat,14.51,613.03,Unknown class 844,6.0969
+onnxruntime,efficientnet_b0,cat,14.42,613.33,Unknown class 844,6.1748
+onnxruntime,efficientnet_b0,cat,14.38,1135.44,Unknown class 844,6.1103
+onnxruntime,efficientnet_b0,cat,14.53,612.11,Unknown class 844,6.0922
+onnxruntime,efficientnet_b0,cat,14.50,611.12,Unknown class 844,6.2016
+onnxruntime,efficientnet_b0,cat,14.46,613.12,Unknown class 844,6.1203
+onnxruntime,efficientnet_b0,cat,14.51,616.58,Unknown class 844,6.1335
+onnxruntime,efficientnet_b0,cat,14.41,616.04,Unknown class 844,6.1945
+onnxruntime,efficientnet_b0,cat,14.49,623.31,Unknown class 844,6.1393

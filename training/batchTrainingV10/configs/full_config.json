@@ -1,0 +1,165 @@
+{
+    "__comment": "Here change the model you want to use, below change its config",
+    "__info": "Run configs are separate for each model to maintain overview of some default settings for each model - some need higher decay, some lower LR etc",
+    "model": "BigEfficientVideoModel",
+    "mode": "local",
+    "group": "grid_search_20250516_210356",
+    "TinyVideoModel": {
+        "model": "TinyVideoModel",
+        "run_config": {
+            "id_column": "flickr_id",
+            "label_columns": [
+                "MOS",
+                "colorfulness"
+            ],
+            "seq_length": 10,
+            "save_format": "both",
+            "save_period": 5,
+            "num_workers": 2,
+            "lr": 0.001,
+            "batch_size": 16,
+            "epochs": 100,
+            "scheduler": "one_cycle",
+            "lr_factor": 0.5,
+            "lr_patience": 5,
+            "weight_decay": 0.01,
+            "clip_grad_norm": 0.7,
+            "clip_grad_value": 0
+        },
+        "model_config": {
+            "__comment": "Here change the model parameters which are used for initialization",
+            "__fyi": "TinyVideoModel does not use any additional initialization parameters"
+        }
+    },
+    "BigEfficientVideoModel": {
+        "model": "BigEfficientVideoModel",
+        "run_config": {
+            "id_column": "flickr_id",
+            "label_columns": [
+                "MOS",
+                "colorfulness"
+            ],
+            "seq_length": 10,
+            "save_format": "both",
+            "save_period": 10,
+            "num_workers": 2,
+            "lr": 0.01,
+            "batch_size": 4,
+            "epochs": 100,
+            "scheduler": "one_cycle",
+            "lr_factor": 0.5,
+            "lr_patience": 5,
+            "weight_decay": 0.001,
+            "clip_grad_norm": 0.7,
+            "clip_grad_value": 0,
+            "dropout": 0.3
+        },
+        "model_config": {
+            "__comment": "Here change the model parameters which are used for initialization",
+            "encoder_dim": 512,
+            "heads": 8,
+            "depth": 4,
+            "mlp_dim": 1024,
+            "pos_encoding_type": "learnable",
+            "dropout": 0.3
+        }
+    },
+    "BigFlexibleVideoModel": {
+        "model": "BigFlexibleVideoModel",
+        "run_config": {
+            "id_column": "flickr_id",
+            "label_columns": [
+                "MOS",
+                "colorfulness"
+            ],
+            "seq_length": 2,
+            "save_format": "both",
+            "save_period": 5,
+            "num_workers": 2,
+            "lr": 0.001,
+            "batch_size": 16,
+            "epochs": 100,
+            "scheduler": "one_cycle",
+            "lr_factor": 0.5,
+            "lr_patience": 5,
+            "weight_decay": 0.01,
+            "clip_grad_norm": 0.7,
+            "clip_grad_value": 0
+        },
+        "model_config": {
+            "__comment": "Here change the model parameters which are used for initialization",
+            "encoder_dim": 768,
+            "heads": 4,
+            "mlp_hidden_dims": [
+                256,
+                64
+            ],
+            "mlp_dim": 1024,
+            "pos_encoding_type": "learnable"
+        }
+    },
+    "BigDropoutFlexibleVideoModel": {
+        "model": "BigDropoutFlexibleVideoModel",
+        "run_config": {
+            "id_column": "flickr_id",
+            "label_columns": [
+                "MOS",
+                "colorfulness"
+            ],
+            "seq_length": 2,
+            "save_format": "both",
+            "save_period": 5,
+            "num_workers": 2,
+            "lr": 0.001,
+            "batch_size": 16,
+            "epochs": 100,
+            "scheduler": "one_cycle",
+            "lr_factor": 0.5,
+            "lr_patience": 5,
+            "weight_decay": 0.01,
+            "clip_grad_norm": 0.7,
+            "clip_grad_value": 0
+        },
+        "model_config": {
+            "__comment": "Here change the model parameters which are used for initialization",
+            "encoder_dim": 768,
+            "heads": 4,
+            "mlp_hidden_dims": [
+                256,
+                64
+            ],
+            "mlp_dim": 1024,
+            "pos_encoding_type": "learnable",
+            "dropout": 0.1
+        }
+    },
+    "NormalVideoModel": {
+        "model": "NormalVideoModel",
+        "run_config": {
+            "id_column": "flickr_id",
+            "label_columns": [
+                "MOS",
+                "colorfulness"
+            ],
+            "seq_length": 2,
+            "save_format": "both",
+            "save_period": 5,
+            "num_workers": 2,
+            "lr": 0.001,
+            "batch_size": 16,
+            "epochs": 100,
+            "scheduler": "one_cycle",
+            "lr_factor": 0.5,
+            "lr_patience": 5,
+            "weight_decay": 0.01,
+            "clip_grad_norm": 0.7,
+            "clip_grad_value": 0
+        },
+        "model_config": {
+            "__comment": "Here change the model parameters which are used for initialization",
+            "encoder_dim": 512,
+            "mlp_dim": 1024,
+            "dropout": 0.2
+        }
+    }
+}

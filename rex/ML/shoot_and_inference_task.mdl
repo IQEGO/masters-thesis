@@ -1,0 +1,1153 @@
+Model {
+  Name                    "shoot_and_inference_task"
+  Version                 3.00
+  #RexVersion             "3.00.3 rev. 16843, Date 2024-11-03"
+  ShowPortLabels          on
+  SavedCharacterEncoding  "UTF-8"
+  MaskType                "REX sequence"
+  MaskIconFrame           on
+  MaskIconOpaque          on
+  MaskIconRotate          "none"
+  MaskIconUnits           "autoscale"
+  BlockDefaults {
+    ForegroundColor         "black"
+    BackgroundColor         "white"
+    DropShadow              off
+    NamePlacement           "normal"
+    FontName                "Arial"
+    FontSize                10
+    FontWeight              "normal"
+    FontAngle               "normal"
+    ShowName                on
+    Orientation             "right"
+  }
+  AnnotationDefaults {
+    HorizontalAlignment     "center"
+    VerticalAlignment       "middle"
+    ForegroundColor         "black"
+    BackgroundColor         "white"
+    DropShadow              off
+    FontName                "Arial"
+    FontSize                10
+    FontWeight              "normal"
+    FontAngle               "normal"
+  }
+  LineDefaults {
+    FontName                "Arial"
+    FontSize                9
+    FontWeight              "normal"
+    FontAngle               "normal"
+  }
+  System {
+    Name                    "shoot_and_inference_task"
+    ZoomFactor              98
+    Location                [244, 34, 585, 436]
+    #GUID                   "13a2f1bf-adc5-42ba-9f2b-f576939a6341"
+    Block {
+      BlockType               Reference
+      Name                    "MP1"
+      Ports                   [0, 1, 0, 0, 0]
+      Position                [55, 48, 70, 62]
+      SourceBlock             "genlib/MP"
+      BSTATE                  off
+      pwidth                  1
+      RPTF                    off
+      #GUID                   "ac5774e6-b9f9-4bc2-9dea-67eb52146e73"
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "ONNX_Efficientnet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [515, 46, 610, 79]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "a7f303f2-680e-49fa-b645-3ee2207fd05b"
+      System {
+        Name                    "ONNX_Efficientnet1"
+        __CopyByReference       off
+        #GUID                   "a7f303f2-680e-49fa-b645-3ee2207fd05b"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "07c85040-9198-4011-baf5-fabb5b452b36"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "efe30b46-8731-4bc5-8941-30bcb3fa1ce3"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "8210d888-a8d6-425d-9383-2329ba99a29a"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "82f93d71-2ba4-486b-b671-0f794af8b042"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "efficientnet_b0"
+          p2                      "onnxruntime"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "dc133991-0a1f-4f0c-87df-cb2237b23fb9"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "269b55a5-5375-4650-b241-197d96cbbcfa"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "c116cb82-2d99-4751-a51a-6975a98bc21f"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "2186dee4-cb8e-4cdd-ae24-d0ad2cc133bd"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "a3f9fa17-f062-45cf-8020-e7c8c775f413"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "997d60bf-2ec0-4303-8eb2-6459d5fa454b"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "a0017ec9-a7fe-4bc7-8565-64a6d6b0e338"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "bee7a054-82aa-4376-bb21-01aa5ecaef22"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "ONNX_Mobilenet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [95, 46, 190, 79]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "3e72212b-99e3-4547-be93-e549a9307e07"
+      System {
+        Name                    "ONNX_Mobilenet1"
+        __CopyByReference       off
+        #GUID                   "3e72212b-99e3-4547-be93-e549a9307e07"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "1f9f383f-9d49-41af-96b5-58c7fde4b103"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "75123a6b-deb8-4bd2-9365-f86aa7c6011e"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "bc5b6017-7981-45c4-aacf-19cf395e3609"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "0040d400-31ca-46bd-b676-24f28efed21d"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "mobilenetv2"
+          p2                      "onnxruntime"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "845f78bd-1afc-4953-a548-af18e0743b58"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "2196efcc-50b5-4c6b-aa9f-7ea2de11a7fa"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "8bbbf2ac-8838-49f3-a79a-95bb0a611b41"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "df112268-366a-433f-b952-f794713e77ce"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "60d667ac-af88-4852-91cd-fe626c7826f6"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "524458ba-1c30-44fe-8740-20ca0c1bf396"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "ec948522-b32e-48f0-8845-5d469f9c5b44"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "e3ae2f91-cf02-40e5-95f1-21c7159a0188"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "ONNX_Resnet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [375, 46, 470, 79]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "45728f4c-76fe-47fc-a487-df972b557348"
+      System {
+        Name                    "ONNX_Resnet1"
+        __CopyByReference       off
+        #GUID                   "45728f4c-76fe-47fc-a487-df972b557348"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "f8b6afd8-ef30-48a4-8dca-f6c6be8c43bd"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "169b533d-9c0f-4b0d-a6d0-6fe3425c7d11"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "8685291e-362e-468e-8083-95f6ed67fd55"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "ea5a9e3f-b094-4f8c-a54e-b14e12817f32"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "resnet50"
+          p2                      "onnxruntime"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "c6c396fe-c8dd-4dbb-b390-2ae4423ddf7a"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "2003b0ad-6c2e-4905-927b-1ea3beee8903"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "7a54f879-560b-41f3-8324-042940d96967"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "4541df51-2770-4eec-a63b-6a35913e9a93"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "10cd3f99-39d3-4f65-9c1e-60c13c337862"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "15751e8a-0442-43ed-9913-2750019d3559"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "f3e614db-d027-4f0e-a702-b06abd8c6b3c"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "0232bd16-e824-4991-b098-a659c20519f7"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "ONNX_Squeezenet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [235, 46, 330, 79]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "4ea92a8e-4a68-47a7-99b1-4c58afc6b2b5"
+      System {
+        Name                    "ONNX_Squeezenet1"
+        __CopyByReference       off
+        #GUID                   "4ea92a8e-4a68-47a7-99b1-4c58afc6b2b5"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "b2d987d6-9224-4e87-bb72-f305a99560be"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "27a3070c-1967-43e5-9b15-a84cd71e0671"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "4cbf3741-5df6-4790-b317-c76085b7787a"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "de284f54-4d41-4e88-89e9-ab4302554d32"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "squeezenet"
+          p2                      "onnxruntime"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "13c5b236-eef4-46f5-a3f4-77d1c938135e"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "757324e1-e46a-4128-afb4-be2cf256baab"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "201080cb-06b8-477d-8e0d-c8aff6c6fe67"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "75b6c143-3cc6-4081-8e93-45780cc82970"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "513e865c-b74f-41d4-8dff-0b1ef26353df"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "d1c49aa7-3455-4189-895a-26db3180af6f"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "cf83ff71-2b92-4dd4-8bec-8f55be128cb2"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "567f96b1-086b-4c3e-8304-e8b2a20da289"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "ONNX_Vit1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [655, 46, 750, 79]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "6ebe0df8-efb5-4558-b6df-f5e7754469f2"
+      System {
+        Name                    "ONNX_Vit1"
+        __CopyByReference       off
+        #GUID                   "6ebe0df8-efb5-4558-b6df-f5e7754469f2"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "b771bd2d-8032-4d1e-ae13-b41c01794561"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "d8077def-3b8d-4a4b-9934-42423ddbc7a2"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "25e5cab3-3b65-4c26-b68d-7089ec08fea5"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "66823e70-fd1a-4f5a-a390-035fdb487590"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "vit_b16"
+          p2                      "onnxruntime"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "42dbdb75-64eb-49ea-b1ed-c2a8e86ac061"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "9318b765-7e8c-4623-ac88-3f1178bd3dea"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "f1960110-b57e-4aee-8858-89e0a40b9655"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "2a1b6c85-a2e8-4bb4-a5e4-3b1d70222d0e"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "a37a2093-da7f-4c76-87ac-a2386d42dec2"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "19f38caf-04af-4a56-b53e-879b1079579d"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "59f4838e-9b73-4b41-a712-83b144731fed"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "434a0b93-59c0-4a06-b259-d6dadfab2694"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "OpenCV_Efficientnet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [515, 121, 610, 154]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "d0c07c90-f236-46ce-bdbc-13f4cdd8c5cd"
+      System {
+        Name                    "OpenCV_Efficientnet1"
+        __CopyByReference       off
+        #GUID                   "d0c07c90-f236-46ce-bdbc-13f4cdd8c5cd"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "eb5099d2-07ac-47d7-b4dc-0dccc74cc1b5"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "6338aabf-6f87-41c6-948d-3c7331fdb628"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "1b8bb99c-853b-4ebd-aec9-d4a6619d00af"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "7cb773a7-31e4-4792-b3b1-de66a213ce26"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "efficientnet_b0"
+          p2                      "opencv"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "998e2786-6313-405a-ac80-3238bb108f17"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "b2b5ab7f-d910-434c-9b2f-f53c9a44911b"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "da6766be-4822-4b50-98bb-d139ad1098f9"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "48a993b7-0a0a-4fa5-8449-8d0f1340d4d3"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "cb171e82-28f2-4ea3-8691-90393796c48f"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "5185d8fd-5ecb-4b87-83cf-583d45a546c3"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "58ad0e52-7425-4b29-89c8-ff2d8e5e66a4"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "d937e7dc-46dd-47ac-8cee-823697c54c8f"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "OpenCV_Resnet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [375, 121, 470, 154]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "4765fb23-42a5-407f-a32d-8973afc6ca03"
+      System {
+        Name                    "OpenCV_Resnet1"
+        __CopyByReference       off
+        #GUID                   "4765fb23-42a5-407f-a32d-8973afc6ca03"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "38f55178-a43b-4d8d-8d1a-652d3ae9ea40"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "8b5802be-c694-4692-9ef1-033e0e673d2c"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "fccff381-c34b-4d4a-8d5a-424ed418e078"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "0eec1c48-2998-4355-9476-336e8ccb0456"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "resnet50"
+          p2                      "opencv"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "3667dd56-60d1-469f-ad06-2656582a0c36"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "17050123-f8c5-4e78-a62e-8a2ed080f964"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "3688944e-8d9c-430b-99bc-04de0b5df8a4"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "e67639fe-1684-429d-b5b0-478c1cb4e49a"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "c27e4fa0-581e-474e-942f-b611e9d2a7d0"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "11a8f2d9-b2ac-41ac-a5b6-9ba1004ec7ee"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "a3c3efe6-9e79-48b7-9485-d72b2d5f2e1d"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "15a524d5-c5ab-4492-91ea-ff029028560e"
+        }
+      }
+    }
+    Block {
+      BlockType               SubSystem
+      Name                    "OpenCV_Squeezenet1"
+      Ports                   [2, 1, 0, 0, 0]
+      Position                [235, 121, 330, 154]
+      FontSize                10
+      ShowPortLabels          on
+      MaskType                "REX sequence"
+      MaskIconFrame           on
+      MaskIconOpaque          on
+      MaskIconRotate          "none"
+      MaskIconUnits           "autoscale"
+      #GUID                   "a3b81b74-600c-459f-9f6f-f14c1bea1987"
+      System {
+        Name                    "OpenCV_Squeezenet1"
+        __CopyByReference       off
+        #GUID                   "a3b81b74-600c-459f-9f6f-f14c1bea1987"
+        Block {
+          BlockType               Inport
+          Name                    "Inport1"
+          Position                [220, 48, 250, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "bdb537a8-f99c-40f2-9347-bcf2cdf8a422"
+        }
+        Block {
+          BlockType               Inport
+          Name                    "Inport2"
+          Position                [220, 123, 250, 137]
+          Port                    2
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "2d138d3f-cc2f-437f-9a3a-ea854433a200"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "EDGE"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [310, 103, 335, 117]
+          SourceBlock             "logiclib/EDGE"
+          iedge                   "1: Rising edge"
+          #GUID                   "6b0c0a34-306c-4330-8059-806eb86170f4"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "NOT"
+          Ports                   [1, 1, 0, 0, 0]
+          Position                [365, 103, 390, 117]
+          SourceBlock             "logiclib/NOT"
+          #GUID                   "e7f293dc-e426-47f7-9a4f-ba7735ef600b"
+        }
+        Block {
+          BlockType               Reference
+          Name                    "PYTHON"
+          Ports                   [18, 18, 0, 0, 0]
+          Position                [420, 100, 485, 290]
+          SourceBlock             "langlib/PYTHON"
+          srcname                 "shoot_and_inference.py"
+          embedded                on
+          p0                      "/mnt/external_hdd/ShootAndInferenceRexTest"
+          p1                      "squeezenet"
+          p2                      "opencv"
+          p3                      ""
+          p4                      ""
+          p5                      ""
+          p6                      ""
+          p7                      ""
+          p8                      ""
+          p9                      ""
+          p10                     ""
+          p11                     ""
+          p12                     ""
+          p13                     ""
+          p14                     ""
+          p15                     ""
+          #RTFlags                1025
+          FontSize                10
+          #GUID                   "f8e86f64-8268-47a9-b485-8213c17fbb31"
+        }
+        Block {
+          BlockType               Outport
+          Name                    "Outport1"
+          Position                [555, 48, 585, 62]
+          Port                    1
+          OutDataTypeStr          "Inherit: auto"
+          Description             ""
+          #GUID                   "f42d87db-55b4-483b-a247-89f6568fa15c"
+        }
+        Line {
+          SrcBlock                "EDGE"
+          SrcPort                 1
+          DstBlock                "NOT"
+          DstPort                 1
+          #GUID                   "05b4a259-55df-4e04-b5f3-9cc2d505c133"
+        }
+        Line {
+          SrcBlock                "Inport1"
+          SrcPort                 1
+          Points                  [25, 0]
+          #GUID                   "ef442884-b227-4996-ae96-1ff62499d36b"
+          Branch {
+            Points                  [0, 55]
+            DstBlock                "EDGE"
+            DstPort                 1
+            #GUID                   "db147bba-5d7e-41ec-8919-06496d362623"
+          }
+          Branch {
+            DstBlock                "Outport1"
+            DstPort                 1
+            #GUID                   "508bedfd-024c-4a13-9b8c-7aa80a8551fa"
+          }
+        }
+        Line {
+          SrcBlock                "Inport2"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 3
+          #GUID                   "a896e3cf-6b6b-4fd3-bf34-85dce2d9b57f"
+        }
+        Line {
+          SrcBlock                "NOT"
+          SrcPort                 1
+          DstBlock                "PYTHON"
+          DstPort                 1
+          #GUID                   "5e3e7cb0-e731-41bc-8cff-10b540d7a528"
+        }
+      }
+    }
+    Line {
+      SrcBlock                "MP1"
+      SrcPort                 1
+      DstBlock                "ONNX_Mobilenet1"
+      DstPort                 1
+      #GUID                   "5409cd43-c77a-44f1-8d73-e501fa84f7ec"
+    }
+    Line {
+      SrcBlock                "ONNX_Efficientnet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "ONNX_Vit1"
+      DstPort                 1
+      #GUID                   "9dd3a1ed-324c-4018-ae1c-b0dc58172fdb"
+    }
+    Line {
+      SrcBlock                "ONNX_Mobilenet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "ONNX_Squeezenet1"
+      DstPort                 1
+      #GUID                   "0dfbd5a4-732b-43ac-b808-d6932a1257a6"
+    }
+    Line {
+      SrcBlock                "ONNX_Resnet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "ONNX_Efficientnet1"
+      DstPort                 1
+      #GUID                   "c9e7c28d-5d47-4f2c-9b95-aa73e6b8c4f4"
+    }
+    Line {
+      SrcBlock                "ONNX_Squeezenet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "ONNX_Resnet1"
+      DstPort                 1
+      #GUID                   "d8cc957b-c8e3-48f5-9bbc-d9fb24e4b558"
+    }
+    Line {
+      SrcBlock                "ONNX_Vit1"
+      SrcPort                 1
+      Points                  [20, 0; 0, 40; -580, 0; 0, 35; 25, 0]
+      DstBlock                "OpenCV_Squeezenet1"
+      DstPort                 1
+      #GUID                   "fe7cf65b-673a-481e-ad8c-51405ac68521"
+    }
+    Line {
+      SrcBlock                "OpenCV_Resnet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "OpenCV_Efficientnet1"
+      DstPort                 1
+      #GUID                   "a12d4a2d-6cbe-46e9-a460-3206269ffbd3"
+    }
+    Line {
+      SrcBlock                "OpenCV_Squeezenet1"
+      SrcPort                 1
+      Points                  [25, 0]
+      DstBlock                "OpenCV_Resnet1"
+      DstPort                 1
+      #GUID                   "a73c65d4-526d-4bcb-ab63-db895d75d444"
+    }
+  }
+}

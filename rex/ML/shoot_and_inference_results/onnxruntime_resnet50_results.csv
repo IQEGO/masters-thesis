@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+onnxruntime,resnet50,cat,47.57,633.76,Unknown class 720,-0.9554
+onnxruntime,resnet50,cat,47.51,644.75,Unknown class 720,-0.7780
+onnxruntime,resnet50,cat,47.46,645.66,Unknown class 720,-0.1006
+onnxruntime,resnet50,cat,47.49,646.04,Unknown class 720,-0.1841
+onnxruntime,resnet50,cat,47.43,643.74,Unknown class 720,-0.2097
+onnxruntime,resnet50,cat,47.47,644.82,Unknown class 720,-0.6701
+onnxruntime,resnet50,cat,47.54,646.58,Unknown class 720,-0.5910
+onnxruntime,resnet50,cat,48.99,656.94,Unknown class 720,-0.4044
+onnxruntime,resnet50,cat,47.57,654.55,Unknown class 720,-0.5754
+onnxruntime,resnet50,cat,47.46,647.66,Unknown class 720,-0.8744

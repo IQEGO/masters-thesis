@@ -1,0 +1,11 @@
+Runtime,Model,Image,Inference Time (ms),Total Time (ms),Top Prediction,Probability
+opencv,efficientnet_b0,cat,102.24,701.78,Unknown class 844,6.1050
+opencv,efficientnet_b0,cat,99.07,696.81,Unknown class 844,6.0791
+opencv,efficientnet_b0,cat,99.11,701.87,Unknown class 844,6.1523
+opencv,efficientnet_b0,cat,99.04,696.87,Unknown class 844,6.1365
+opencv,efficientnet_b0,cat,99.34,699.10,Unknown class 844,6.1418
+opencv,efficientnet_b0,cat,98.98,696.28,Unknown class 844,6.1744
+opencv,efficientnet_b0,cat,101.05,698.07,Unknown class 844,6.0940
+opencv,efficientnet_b0,cat,99.07,697.48,Unknown class 844,6.1004
+opencv,efficientnet_b0,cat,99.12,701.09,Unknown class 844,6.1014
+opencv,efficientnet_b0,cat,98.98,698.26,Unknown class 844,6.1499

@@ -1,0 +1,14 @@
+{
+    "local": {
+        "__comment": "For local mode, use absolute paths, or relative paths starting with '..' ",
+        "video": "../../KoNViD_1k_videos",
+        "csv": "../../KoNViD_1k_metadata/KoNViD_1k_attributes.csv",
+        "results": "../results"
+    },
+    "meta": {
+        "__comment": "For meta mode, use relative paths, the $SCRATCHDIR will be used as base directory",
+        "video": "dataset/KoNViD_1k_videos",
+        "csv": "dataset/KoNViD_1k_metadata/KoNViD_1k_attributes.csv",
+        "results": "results"
+    }
+}
